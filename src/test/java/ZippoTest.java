@@ -215,7 +215,7 @@ public class ZippoTest {
                 .get("http://api.zippopotam.us/us/90210")
 
                 .then()
-                .extract().as(Location.class); // Location sınıfı (şablonu)
+                .extract().as(Location.class) // Location sınıfı (şablonu)
         ;
 
         System.out.println("yer. = " + yer);
