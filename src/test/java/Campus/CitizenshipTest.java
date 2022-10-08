@@ -104,4 +104,33 @@ public class CitizenshipTest {
         System.out.println("Could not recreate the citizenship with same name");
     }
 
+
+    @Test(dependsOnMethods = "createCitizenship")
+    public void updateCitizenship()
+    {
+        citizenshipName = getRandomName();
+
+//      Citizenship citizenship=new Citizenship();
+        citizenship.setId(citizenshipID);
+        citizenship.setName(citizenshipName);
+        citizenship.setShortName(citizenshipShortName);
+
+        given()
+                .cookies(cookies)
+                .contentType(ContentType.JSON)
+                .body(citizenship)
+
+                .when()
+                .put("school-service/api/citizenships")
+
+                .then()
+                .log().body()
+                .statusCode(200)
+                .body("name",equalTo(citizenshipName))
+        ;
+        System.out.println("the citizenship updated successfully");
+    }
+
+
+
 }
