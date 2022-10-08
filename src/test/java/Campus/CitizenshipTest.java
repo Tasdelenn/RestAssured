@@ -1,6 +1,7 @@
 package Campus;
 
 import Campus.Model.Citizenship;
+import Campus.Model.Country;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
 import org.testng.annotations.BeforeClass;
@@ -13,6 +14,7 @@ import static Campus.Model.RandomGenerator.getRandomName;
 import static Campus.Model.RandomGenerator.getRandomShortName;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class CitizenshipTest {
 
@@ -46,6 +48,7 @@ public class CitizenshipTest {
     String citizenshipID;
     String citizenshipName;
     String citizenshipShortName;
+    Citizenship citizenship = new Citizenship();
 
 
     @Test
@@ -54,7 +57,7 @@ public class CitizenshipTest {
         citizenshipName = getRandomName();
         citizenshipShortName = getRandomShortName();
 
-        Citizenship citizenship = new Citizenship();
+//      Citizenship citizenship = new Citizenship();
         citizenship.setName(citizenshipName);
         citizenship.setShortName(citizenshipShortName);
 
@@ -74,8 +77,31 @@ public class CitizenshipTest {
                 .extract().jsonPath().getString("id")
         ;
         System.out.println("created the citizenship");
-
     }
 
+    @Test(dependsOnMethods = "createCitizenship")
+    public void createCitizenshipNegative()
+    {
+        //  "message":"The Citizenship with Name \"German\" already exists."
 
+//      Citizenship citizenship=new Citizenship();
+        citizenship.setName(citizenshipName);
+        citizenship.setShortName(citizenshipShortName);
+
+        given()
+                .cookies(cookies)
+                .contentType(ContentType.JSON)
+                .body(citizenship)
+
+                .when()
+                .post("school-service/api/citizenships")
+
+                .then()
+                .log().body()
+                .statusCode(400)
+                .body("message",equalTo("The Citizenship with Name \""+citizenshipName+"\" already exists."))
+        ;
+        System.out.println("Could not recreate the citizenship with same name");
     }
+
+}
