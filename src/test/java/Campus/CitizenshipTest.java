@@ -131,6 +131,24 @@ public class CitizenshipTest {
         System.out.println("the citizenship updated successfully");
     }
 
+    @Test(dependsOnMethods = "updateCitizenship")
+//  @Test(dependsOnMethods = "createCitizenship")
+    public void deleteCitizenshipById()
+    {
+        given()
+                .cookies(cookies)
+                .pathParam("citizenshipID", citizenshipID)
+
+                .when()
+                .delete("school-service/api/citizenships/{citizenshipID}")
+
+                .then()
+                .log().body()
+                .statusCode(200)
+        ;
+        System.out.println("the citizenship just deleted successfully");
+    }
+
 
 
 }
