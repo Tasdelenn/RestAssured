@@ -165,6 +165,30 @@ public class CitizenshipTest {
         ;
     }
 
+    @Test(dependsOnMethods = "deleteCitizenshipById")
+    public void updateCitizenshipNegative()
+    {
+        citizenshipName = getRandomName();
 
+//      Citizenship citizenship=new Citizenship();
+        citizenship.setId(citizenshipID);
+        citizenship.setName(citizenshipName);
+        citizenship.setShortName(citizenshipShortName);
+
+
+        given()
+                .cookies(cookies)
+                .contentType(ContentType.JSON)
+                .body(citizenship)
+
+                .when()
+                .put("school-service/api/citizenships")
+
+                .then()
+                .log().body()
+                .statusCode(400)
+                .body("message", equalTo("Citizenship not found"))
+        ;
+    }
 
 }
