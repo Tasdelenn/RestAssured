@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/HaQaN/IdeaProjects/RestAssured/src">
+        <classes>
+            <class name="Campus.CitizenshipTest">
+                <methods>
+                    <include name="createCitizenship"/>
+                    <include name="createCitizenshipNegative"/>
+                    <include name="updateCitizenship"/>
+                    <include name="deleteCitizenshipById"/>
+                    <include name="deleteCitizenshipByIdNegative"/>
+                    <include name="updateCitizenshipNegative"/>
+                </methods>
+            </class>
+            <class name="Campus.CountryTest">
+                <methods>
+                    <include name="createCountry"/>
+                    <include name="createCountryNegative"/>
+                    <include name="updateCountry"/>
+                    <include name="deleteCountryById"/>
+                    <include name="deleteCountryByIdNegative"/>
+                    <include name="updateCountryNegative"/>
+                </methods>
+            </class>
+            <class name="GoRest.GoRestTests">
+                <methods>
+                    <include name="queryParamTest"/>
+                    <include name="queryParamTest2"/>
+                    <include name="extractingJsonPathInt"/>
+                    <include name="extractingJsonPathInt2"/>
+                    <include name="extractingJsonPathIntList"/>
+                    <include name="extractingJsonPathStringList"/>
+                    <include name="extractingJsonPathResponsAll"/>
+                    <include name="requestResponseSpecification"/>
+                </methods>
+            </class>
+            <class name="GoRest.GoRestUsersTests">
+                <methods>
+                    <include name="createUserObject"/>
+                    <include name="updateUserObject"/>
+                    <include name="getUserByID"/>
+                    <include name="deleteUserById"/>
+                    <include name="deleteUserByIdNegative"/>
+                    <include name="getUsers"/>
+                    <include name="getUserByIDExtract"/>
+                    <include name="getUsersV1"/>
+                    <include name="createUser"/>
+                    <include name="createUserMap"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
