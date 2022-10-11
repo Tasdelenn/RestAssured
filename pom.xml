@@ -55,7 +55,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
-                    <!--                   XML paralel çalışmada master report için kondu-->
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -64,6 +63,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
