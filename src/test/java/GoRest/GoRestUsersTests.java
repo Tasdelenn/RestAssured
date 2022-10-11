@@ -30,7 +30,7 @@ public class GoRestUsersTests {
         return RandomStringUtils.randomAlphabetic(8).toLowerCase()+"@gmail.com";
     }
 
-    int userID=0;
+    int userID;
     User newUser;
 
     @Test
@@ -177,15 +177,15 @@ public class GoRestUsersTests {
         System.out.println("usersJsonPath = " + usersJsonPath);
     }
 
-    @Test
+    @Test()
     public void getUserByIDExtract()
     {
         // TODO : GetUserByID testinde dönen user ı bir nesneye atınız.
-        User user=
+        User user =
         given()
                 .header("Authorization","Bearer f01304cbf43bd6c97438113285e104cbecda8f0d0e56252dc06d94782dabf7ca")
                 .contentType(ContentType.JSON)
-                .pathParam("userID", 3414)
+                .pathParam("userID", 3402)
 
                 .when()
                 .get("users/{userID}")
@@ -196,8 +196,8 @@ public class GoRestUsersTests {
                 //.extract().as(User.class)
                 .extract().jsonPath().getObject("", User.class)
         ;
+        System.out.println("user: " + user);
 
-        System.out.println("user = " + user);
     }
 
     @Test

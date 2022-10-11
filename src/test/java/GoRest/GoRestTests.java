@@ -112,7 +112,7 @@ public class GoRestTests {
                 ;
 
         System.out.println("idler = " + idler);
-        Assert.assertTrue(idler.contains(4057));
+        Assert.assertTrue(idler.contains(2185));
     }
 
     @Test
@@ -131,7 +131,7 @@ public class GoRestTests {
                 ;
 
         System.out.println("isimler = " + isimler);
-        Assert.assertTrue(isimler.contains("Gajabahu Adiga"));
+        Assert.assertTrue(isimler.contains("Dandak Tagore"));
     }
 
     @Test
