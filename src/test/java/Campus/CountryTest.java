@@ -108,8 +108,7 @@ public class CountryTest {
     @Test(dependsOnMethods = "createCountry")
     public void updateCountry()
     {
-        //"message": "The Country with Name \"France 375\" already exists.",
-        countryName = getRandomName();
+    countryName = getRandomName();
 
         Country country=new Country();
         country.setId(countryID);
