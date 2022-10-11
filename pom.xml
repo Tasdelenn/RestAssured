@@ -57,7 +57,7 @@
                 <configuration>
                     <!--                   XML paralel çalışmada master report için kondu-->
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
